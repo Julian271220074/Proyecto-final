@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Eliminación</title>
+</head>
+<body>
+    <h1>¿Está seguro de que desea eliminar el tipo de producto "{{ tipo.nombre }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+    </form>
+    <a href="{% url 'lista_tipo_productos' %}">Cancelar</a>
+</body>
+</html>

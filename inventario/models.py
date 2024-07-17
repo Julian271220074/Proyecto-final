@@ -3,10 +3,16 @@ from django.db import models
 class Marca(models.Model):
     logo_Tipo = models.BinaryField()
     nombre = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return self.nombre
 
 class TipoProducto(models.Model):
     nombre = models.CharField(max_length=45)
     descripcion = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return self.nombre
 
 class Producto(models.Model):
     codigo_barras = models.CharField(max_length=100)
@@ -14,6 +20,9 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=100)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
     tipo_producto = models.ForeignKey(TipoProducto, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nombre
 
 class Presentacion(models.Model):
     nombre = models.CharField(max_length=45)
