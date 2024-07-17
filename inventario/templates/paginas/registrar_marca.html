@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Marca{% endblock %}
+
+{% block content %}
+<h2>Registrar Nueva Marca</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
+        {{ form.nombre }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.codigo.id_for_label }}" class="form-label">Código</label>
+        {{ form.codigo }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ form.logo_tipo.id_for_label }}" class="form-label">Logo</label>
+        {{ form.logo_tipo }}
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+{% endblock %}

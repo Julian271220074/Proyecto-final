@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Buscar Presentación{% endblock %}
+
+{% block content %}
+<h2>Buscar Presentación</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del Producto</label>
+        <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <div class="mb-3">
+        <label for="codigo" class="form-label">Código de Barras</label>
+        <input type="text" class="form-control" id="codigo" name="codigo">
+    </div>
+    <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" name="descripcion">
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+{% if presentaciones %}
+<h3 class="mt-4">Resultados:</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Nombre</th>
+            <th>Precio de Venta</th>
+            <th>Cantidad en Stock</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for presentacion in presentaciones %}
+        <tr>
+            <td>{{ presentacion.producto.nombre }}</td>
+            <td>{{ presentacion.nombre }}</td>
+            <td>{{ presentacion.precio_venta }}</td>
+            <td>{{ presentacion.cantidad_stock }}</td>
+            <td>{% if presentacion.activo %}Activo{% else %}Inactivo{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

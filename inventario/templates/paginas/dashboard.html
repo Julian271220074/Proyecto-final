@@ -1,0 +1,22 @@
+<!-- paginas/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'buscar_presentacion' %}">Buscar Presentación</a></li>
+            <li><a href="{% url 'consultar_marca' %}">Consultar Marca</a></li>
+            <li><a href="{% url 'listar_marcas' %}">Listar Marcas</a></li>
+            <li><a href="{% url 'listar_presentaciones' %}">Listar Presentaciones</a></li>
+            <li><a href="{% url 'registrar_marca' %}">Registrar Marca</a></li>
+            <li><a href="{% url 'registrar_presentacion' %}">Registrar Presentación</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

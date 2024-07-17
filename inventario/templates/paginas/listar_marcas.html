@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Marcas{% endblock %}
+
+{% block content %}
+<h2>Listado de Marcas</h2>
+<a href="{% url 'registrar_marca' %}" class="btn btn-primary mb-3">Registrar Nueva Marca</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Código</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for marca in marcas %}
+        <tr>
+            <td>{{ marca.nombre }}</td>
+            <td>{{ marca.codigo }}</td>
+            <td>{% if marca.activo %}Activo{% else %}Inactivo{% endif %}</td>
+            <td>
+                <a href="{% url 'activar_desactivar_marca' marca.id %}" class="btn btn-sm btn-{% if marca.activo %}warning{% else %}success{% endif %}">
+                    {% if marca.activo %}Desactivar{% else %}Activar{% endif %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

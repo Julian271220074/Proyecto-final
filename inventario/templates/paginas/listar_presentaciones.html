@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Presentaciones{% endblock %}
+
+{% block content %}
+<h2>Listado de Presentaciones</h2>
+<a href="{% url 'registrar_presentacion' %}" class="btn btn-primary mb-3">Registrar Nueva Presentación</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Nombre</th>
+            <th>Precio de Venta</th>
+            <th>Cantidad en Stock</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for presentacion in presentaciones %}
+        <tr>
+            <td>{{ presentacion.producto.nombre }}</td>
+            <td>{{ presentacion.nombre }}</td>
+            <td>{{ presentacion.precio_venta }}</td>
+            <td>{{ presentacion.cantidad_stock }}</td>
+            <td>{% if presentacion.activo %}Activo{% else %}Inactivo{% endif %}</td>
+            <td>
+                <a href="{% url 'activar_desactivar_presentacion' presentacion.id %}" class="btn btn-sm btn-{% if presentacion.activo %}warning{% else %}success{% endif %}">
+                    {% if presentacion.activo %}Desactivar{% else %}Activar{% endif %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

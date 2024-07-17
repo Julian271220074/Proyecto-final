@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Consultar Marca{% endblock %}
+
+{% block content %}
+<h2>Consultar Marca</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <div class="mb-3">
+        <label for="codigo" class="form-label">Código</label>
+        <input type="text" class="form-control" id="codigo" name="codigo">
+    </div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+{% if marca %}
+<h3 class="mt-4">Resultado:</h3>
+<table class="table table-striped">
+    <tr>
+        <th>Nombre</th>
+        <td>{{ marca.nombre }}</td>
+    </tr>
+    <tr>
+        <th>Código</th>
+        <td>{{ marca.codigo }}</td>
+    </tr>
+    <tr>
+        <th>Estado</th>
+        <td>{% if marca.activo %}Activo{% else %}Inactivo{% endif %}</td>
+    </tr>
+</table>
+{% endif %}
+{% endblock %}
