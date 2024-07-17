@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
-from django.conf import settings
-from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
-    path('', views.inicio, name='inicio'),
-] 
+    path('', views.lista_compras, name='lista_compras'),
+    path('crear/', views.crear_compra, name='crear_compra'),
+    path('compras/', views.lista_compras, name='lista_compras'),
+    path('eliminar_compra/<int:pk>/', views.eliminar_compra, name='eliminar_compra'),
+    path('editar_compra/<int:pk>/', views.editar_compra, name='editar_compra'),
+]
