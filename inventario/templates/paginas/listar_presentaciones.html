@@ -25,8 +25,8 @@
             <td>{{ presentacion.cantidad_stock }}</td>
             <td>{% if presentacion.activo %}Activo{% else %}Inactivo{% endif %}</td>
             <td>
-                <a href="{% url 'activar_desactivar_presentacion' presentacion.id %}" class="btn btn-sm btn-{% if presentacion.activo %}warning{% else %}success{% endif %}">
-                    {% if presentacion.activo %}Desactivar{% else %}Activar{% endif %}
+                <a href="{% url 'activar_desactivar_marca' marca.id %}" class="btn btn-sm btn-{% if marca.activo %}warning{% else %}success{% endif %}">
+                    {% if marca.activo %}Desactivar{% else %}Activar{% endif %}
                 </a>
             </td>
         </tr>

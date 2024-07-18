@@ -33,6 +33,8 @@ def activar_desactivar_marca(request, marca_id):
     marca.save()
     return redirect('listar_marcas')
 
+#Presentacion
+
 def registrar_presentacion(request):
     if request.method == 'POST':
         form = PresentacionForm(request.POST)
