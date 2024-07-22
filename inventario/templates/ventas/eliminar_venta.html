@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Venta</title>
+</head>
+<body>
+    <h1>Eliminar Venta</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>¿Estás seguro de que deseas eliminar esta venta?</p>
+        <button type="submit">Eliminar</button>
+    </form>
+</body>
+</html>

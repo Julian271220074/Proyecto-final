@@ -71,7 +71,3 @@ class PresentacionHasVentas(models.Model):
     presentacion = models.ForeignKey(Presentacion, on_delete=models.CASCADE)
     ventas = models.ForeignKey(Ventas, on_delete=models.CASCADE)
 
-
-class Tambo(models.Model):
-    presentacion = models.ForeignKey(Presentacion, on_delete=models.CASCADE)
-    ventas = models.ForeignKey(Ventas, on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Compra
-from .forms import CompraForm
+from .models import Compra, Ventas
+from .forms import CompraForm, VentaForm
 
 def lista_compras(request):
     compras = Compra.objects.all()
@@ -37,3 +37,40 @@ def eliminar_compra(request, pk):
         compra.delete()
         return redirect('lista_compras')
     return render(request, 'compras/eliminar_compra.html', {'compra': compra})
+
+
+
+
+
+def listar_venta(request):
+    ventas = Ventas.objects.all()
+    return render(request, 'ventas/listar_venta.html', {'ventas': ventas})
+
+def crear_venta(request):
+    if request.method == "POST":
+        form = VentaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_venta')
+    else:
+        form = VentaForm()
+    return render(request, 'ventas/crear_venta.html', {'form': form})
+
+def editar_venta(request, pk):
+    venta = get_object_or_404(Ventas, pk=pk)
+    if request.method == "POST":
+        form = VentaForm(request.POST, instance=venta)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_venta')
+    else:
+        form = VentaForm(instance=venta)
+    return render(request, 'ventas/editar_venta.html', {'form': form})
+
+def eliminar_venta(request, pk):
+    venta = get_object_or_404(Ventas, pk=pk)
+    if request.method == "POST":
+        venta.delete()
+        return redirect('listar_venta')
+    return render(request, 'ventas/eliminar_venta.html', {'venta': venta})
+
